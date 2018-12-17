@@ -1,0 +1,263 @@
+
+  .playerOne .object, .playerOne .moving{ 
+    background-image: url('../img/png/male_zombie_sprite.png');
+    background-size: 1350%;
+  } 
+  
+  .playerTwo .object, .playerTwo .moving{ 
+    background-image: url('../img/png/female_zombie_sprite.png'); 
+    background-size: 1250%;
+  } 
+
+  .playerOne .object, .playerTwo .object{ 
+    /*SCENARIO SANS 'BACKGROUND-SIZE=1350%
+    background-position: -10px -75px; */
+    /*SCENARIO AVEC 'BACKGROUND-SIZE=1350%*/
+    background-position: -10px -70px;
+  } 
+  .playerOne .moving, .playerTwo .moving{ 
+    width: 100%; 
+    height: 100%;
+    background-position: -10px -70px; 
+    z-index: 11;
+  } 
+
+
+  /* ---------------------------   Sprites -----------------  
+      Male Zombie SpriteSheet: width = 1530px, height = 1024px
+      Single Male Zombie png : width = 1530/10 = 153px, height = 1024/8 = 128px
+    Female Zombie SpriteSheet: width = 1400px, height = 1024px
+    Single Female Zombie png : width = 1400/10 = 140px, height = 1024/8 = 128px
+    
+    RAPPEL : horizontal = x || vertical = y 
+
+    BOTH :  Row 1 : stand to right > background-position-y 128px*0=0px   
+            Row 2 : stand to left  > background-position-y 128px*1=128px 
+            Row 3 : die to right: > background-position-y 128px*2=256px 
+            Row 4 : die to left   > background-position-y 128px*3=384px
+            Row 5 : attack to right> background-position-y 128px*4=512px 
+            Row 6 : attack to left > background-position-y 128px*5=640px
+            Row 7 : die to right   > background-position-y 128px*6=768px 
+            Row 8 : die to left    > background-position-y 128px*7=896px 
+
+--- DEBOUT ---  
+/*vers la droite = OK
+  /*SCENARIO SANS 'BACKGROUND-SIZE=1350%'
+    /!\ calc(positionx/y px - décalage px) pour centrer les personnages*/
+  /*@-webkit-keyframes steady-right-male{ 
+    from { background-position: calc(0px - 10px) calc(0px - 75px); } 
+    to { background-position: calc(1530px - 10px) calc(0px - 75px); } 
+  } 
+  @keyframes steady-right-male{ 
+    from { background-position: calc(0px - 10px) calc(0px - 75px); } 
+    to { background-position: calc(1530px - 10px) calc(0px - 75px); } 
+  } 
+  @-webkit-keyframes steady-right-female{ 
+    from { background-position: calc(0px - 10px) calc(0px - 75px); } 
+    to { background-position: calc(1400px - 10px) calc(0px - 75px); } 
+  } 
+  @keyframes steady-right-female{ 
+    from { background-position: calc(0px - 10px) calc(0px - 75px); } 
+    to { background-position: calc(1400px - 10px) calc(0px - 75px); } 
+  } */
+  
+  /*vers la gauche*/ 
+  /*@-webkit-keyframes steady-left-male{ 
+    from { background-position: calc(0px - 30px) calc(-128px - 75px); } 
+    to { background-position: calc(-1530px - 30px) calc(-128px - 75px); }  
+  } 
+  @keyframes steady-left-male{ 
+    from { background-position: calc(0px - 30px) calc(-128px - 75px); } 
+    to { background-position: calc(-1530px - 30px) calc(-128px - 75px); } 
+  } 
+  @-webkit-keyframes steady-left-female{ 
+    from { background-position: calc(0px - 30px)calc(-128px - 75px); } 
+    to { background-position: calc(-1400px - 30px) calc(-128px - 75px); }  
+  } 
+  @keyframes steady-left-female{ 
+    from { background-position: calc(0px - 30px)calc(-128px - 75px); } 
+    to { background-position: calc(-1400px - 30px) calc(-128px - 75px); }  
+  } */
+
+  /*/*SCENARIO AVEC 'BACKGROUND-SIZE=1350%'*/
+  @-webkit-keyframes steady-right-male{ /*ok - offset = 63*/
+    from { background-position: calc(0px - 0px) -7px; } 
+    to { background-position: calc(1530px - 18px) -7px; } 
+  } 
+  @keyframes steady-right-male{ 
+    from { background-position: calc(0px - 0px) -7px; } 
+    to { background-position: calc(1530px - 18px) -7px; } 
+  } 
+  @-webkit-keyframes steady-right-female{ /*ok*/
+    from { background-position: 0px -7px; } 
+    to { background-position: 1400px -7px; }
+  } 
+  @keyframes steady-right-female{ 
+    from { background-position: 0px -7px; } 
+    to { background-position: 1400px -7px; } 
+  }
+  @-webkit-keyframes steady-left-male{ /*ok*/
+    from { background-position: 0px calc(-7px - 63px); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - 63px); }   
+  } 
+  @keyframes steady-left-male{ 
+    from { background-position: 0px calc(-7px - 63px); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - 63px); } 
+  } 
+  @-webkit-keyframes steady-left-female{ /*ok*/
+    from { background-position: 0px calc(-7px - 65px); } 
+    to { background-position: -1400px calc(-7px - 65px); }   
+  } 
+  @keyframes steady-left-female{ 
+    from { background-position: 0px calc(-7px - 65px); } 
+    to { background-position: -1400px calc(-7px - 65px); }  
+  }
+  /* Attention à l'attribution des classes css pour que les joueurs se fassent toujours face !!! */
+  .playerOne .object { 
+    -webkit-animation: steady-left-male 1.3s steps(10) infinite; 
+            animation: steady-left-male 1.3s steps(10) infinite; 
+  } 
+  /*.playerOne .object .right{ 
+    -webkit-animation: steady-right-male 1.3s steps(10) infinite; 
+            animation: steady-right-male 1.3s steps(10) infinite; 
+  }
+  .playerTwo .object .left{ 
+    -webkit-animation: steady-left-female 1.3s steps(10) infinite; 
+            animation: steady-left-female 1.3s steps(10) infinite; 
+  }*/
+  .playerTwo .object { 
+    -webkit-animation: steady-right-female 1.3s steps(10) infinite; 
+            animation: steady-right-female 1.3s steps(10) infinite; 
+  }
+
+/*- MARCHER ---  
+ 
+  vers la droite */ 
+  @-webkit-keyframes walk-right-male{ /*ok*/
+    from { background-position: 0px calc(-7px - calc(63px * 2)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 2)); } 
+  } 
+  @keyframes walk-right-male{
+    from { background-position: 0px calc(-7px - calc(63px * 2)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 2)); }
+  } 
+  @-webkit-keyframes walk-right-female{ /*ok*/
+    from { background-position: 0px calc(-7px - calc(65px * 2)); } 
+    to { background-position: 1400px calc(-7px - calc(65px * 2)); } 
+  } 
+  @keyframes walk-right-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 2)); } 
+    to { background-position: 1400px calc(-7px - calc(65px * 2)); } 
+  }
+  
+  .playerOne .move-right, .playerOne .move-bottom{ 
+    -webkit-animation: walk-right-male 1.3s steps(10) infinite; 
+            animation: walk-right-male 1.3s steps(10) infinite; 
+  } 
+  .playerTwo .move-right, .playerTwo .move-bottom{ 
+    -webkit-animation: walk-right-female 1.3s steps(10) infinite; 
+            animation: walk-right-female 1.3s steps(10) infinite; 
+  } 
+
+  /*vers la gauche*/ 
+  @-webkit-keyframes walk-left-male{ /*ok*/
+    from { background-position: 0px calc(-7px - calc(63px * 3)); }     
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 3)); }  
+  } 
+  @keyframes walk-left-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 3)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 3)); }  
+  } 
+  @-webkit-keyframes walk-left-female{ /*ok*/
+    from { background-position: 0px calc(-7px - calc(65px * 3)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 3)); }  
+  } 
+  @keyframes walk-left-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 3)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 3)); }  
+  } 
+
+  .playerOne .move-left, .playerOne .move-top{ 
+    -webkit-animation: walk-left-male 1.3s steps(10) infinite; 
+            animation: walk-left-male 1.3s steps(10) infinite; 
+  } 
+  .playerTwo .move-left, .playerTwo .move-top{ 
+    -webkit-animation: walk-left-female 1.3s steps(10) infinite; 
+            animation: walk-left-female 1.3s steps(10) infinite; 
+  } 
+  
+  /*- ATTAQUER ---  
+ 
+  vers la droite */ 
+  @-webkit-keyframes attack-right-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 4)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 4)); }  
+  } 
+  @keyframes attack-right-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 4)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 4)); }  
+  } 
+  @-webkit-keyframes attack-right-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 4)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 4)); }  
+  } 
+  @keyframes attack-right-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 4)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 4)); }  
+  } 
+
+  /*vers la gauche */ 
+  @-webkit-keyframes attack-left-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 5)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 5)); }  
+  } 
+  @keyframes attack-left-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 5)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 5)); }  
+  } 
+  @-webkit-keyframes attack-left-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 5)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 5)); }  
+  } 
+  @keyframes attack-left-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 5)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 5)); }  
+  } 
+
+  /*- MOURIR ---  
+ 
+  vers la droite */ 
+  @-webkit-keyframes die-right-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 6)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 6)); }  
+  } 
+  @keyframes die-right-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 6)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 6)); }  
+  } 
+  @-webkit-keyframes die-right-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 6)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 6)); }  
+  } 
+  @keyframes die-right-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 6)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 6)); }  
+  } 
+
+  /*vers la gauche */ 
+  @-webkit-keyframes die-left-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 7)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 7)); }  
+  } 
+  @keyframes die-left-male{ 
+    from { background-position: 0px calc(-7px - calc(63px * 7)); } 
+    to { background-position: calc(1530px - 18px) calc(-7px - calc(63px * 7)); }  
+  } 
+  @-webkit-keyframes die-left-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 7)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 7)); }  
+  } 
+  @keyframes die-left-female{ 
+    from { background-position: 0px calc(-7px - calc(65px * 7)); } 
+    to { background-position: -1400px calc(-7px - calc(65px * 7)); }  
+  } 
