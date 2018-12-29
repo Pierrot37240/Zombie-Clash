@@ -1,0 +1,74 @@
+Jeu de plateau, combat entre 2 zombies
+le but est de se procurer l'arme la plus puissante avant de déclencher un combat à mort.
+
+Avancement : 
+Le programme fonctionne jusqu'à la fin du combat. Le prochain stade consiste à intégrer des animations
+pendant le combat : les zombies se frappent, les dégâts se décomptent progressivement, le joueur actif bénéficie 
+d'un d'une mise en avant graphique sur les zones d'infos.
+Plus : intégrer l'image de l'arme active et son image dans la zone d'infos du joueur.
+
+Le dossier CSS contient les fichiers css suivants:
+-board.css : gère le graphisme du plateau de jeu
+-player.css : gère les animations des deux personnages
+-weapons.css : idem pour les armes
+-informations.css : idem pour les zones d'infos utilisateurs
+-style.css : centralise l'import des fichiers css, gère le graphisme de base
+-normalize.css
+
+Le dossier IMG contient les png des armes, jpeg de la map et fond d'écran, et les sprites.
+
+Le dossier JS contient les fichiers JavaScript :
+-demarrage.js : lancement des fonctions d'initialisation du jeu
+-game.js : classe
+   .fonction d'initialisation du jeu
+   .création de coordonnées aléatoires pour les armes/obstacles/joueurs
+   .changer d'arme si le joueur passe dessus
+   .lancement des fonctions pour se déplacer
+   .fonction de maj santé pour combat
+   .fonction de maj état du jeu
+   .fonction de maj mode combat (on/off)
+   .fonction de redémarrage
+   .utilitaire pour inverser le joueur actif passé en paramètre
+
+-board.js : classe
+   .définit 4 classes de champs (vide, obstacle, joueur et arme)
+   .fonction d'initialisation de l'objet 'board' (carré de 10x10 en mémoire)
+
+-player.js : classe
+   .initialisation objet joueur
+   .maj déplacements possibles
+   .maj position sur le plateau (anciennes et nouvelles coordonnées)
+   .teste si position ciblée est possible ("non-obstacle")
+   .maj santé joueur
+   .maj arme active joueur
+
+-weapon.js : classe
+   .définition dégâts et modèle d'arme
+
+-display.js : classe
+   .initialisation pour gestion affichage des autres objets
+   .génération du plateau et des ID de cases
+   .affichage du plateau
+   .affichage/désaffichage du joueur
+   .affichage/désaffichage des déplacements possibles
+   .affichage/désaffichage des armes
+   .génération en mémoire de la trajectoire du joueur
+   .génération/maj des infos utilisateurs
+   .fonctions de gestions des déplacements et des animations
+   .2 fonctions JQuery pour ajout/retrait classes CSS 
+
+-cycle.js : classe
+   .gestion changement tour de chaque joueur avec ou non mode combat
+   .démarrage mode combat
+   .redémarrage
+   .détection click pour déplacement
+   .gestion tour de combat
+   .boucle récursive pour cycle de jeu
+
+-global_functions.js : 
+   .fonction de génération de nombre aléatoire
+   .calcul de distance entre champs sur plateau
+   .test si une coordonnée est reprise dans le tableau passé en pramètre
+   .renvoie l'index d'une coordonnée dans le tableau passé en paramètre
+
+jquery-3.1.1.min.js : bibliothèque JQuery

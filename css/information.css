@@ -1,0 +1,93 @@
+#player1, #player2{
+    float: left;
+    width : 20%;
+    margin-left: 20px; 
+    margin-right: 20px;
+  }
+
+#player1 .player, #player2 .player{ 
+    margin-bottom: 10px; 
+    padding: 8px 4px; 
+    text-align: center; 
+    border: 3px solid rgba(200,200,200,0.8); 
+    border-radius: 3px; 
+  } 
+
+#player1 .player, #player2 .player, #player1 .player .title, #player2 .player .title{
+    font-family: 'Special Elite', Times, serif; 
+  }
+
+#player1 .player.active{ 
+    border: 3px solid red; 
+    background-color: rgba(244, 7, 7, 0.2); 
+  } 
+  
+#player2 .player.active{ 
+    border: 3px solid green; 
+    background-color: rgba(7, 244, 31, 0.2); 
+  } 
+  
+#player1 .player .title, #player2 .player .title{ 
+    font-weight: 700; 
+    font-size: 2em; 
+  } 
+  
+#player1 .player .power.label, #player1 .player .weapon.label, #player2 .player .power.label, #player2 .player .weapon.label{ 
+    font-weight: 700; 
+    font-size: 1.2em; 
+  } 
+  
+#player1 .power.value, #player1 .weapon.value, #player2 .power.value, #player2 .weapon.value{ 
+    font-weight: 900; 
+    font-size: 1.4em; 
+  } 
+  
+#player1 .power.value, #player2 .power.value{ 
+    margin-bottom: 8px; 
+  } 
+
+
+#informations{ 
+    /*float: left;*/
+    width: 120px; 
+    height: auto; /*600px; */
+    position: relative; 
+    color: white; 
+    margin-left: 20px; 
+    vertical-align: top; 
+  } 
+  
+#informations .turn, #informations .button, #informations .instruction{ 
+    width: 100%; 
+    /*display: inline-block;*/
+    margin-bottom: 10px; 
+    padding: 8px 4px; 
+    text-align: center; 
+    border: 3px solid rgba(200,200,200,0.8); 
+    border-radius: 3px; 
+  } 
+  
+#informations .turn, #informations .button, #informations .instruction, #informations kbd{ 
+    font-family: 'Amatic SC', Helvetica, sans-serif; 
+  } 
+  
+#informations .instruction div:first-of-type{ 
+    margin-bottom: 8px; 
+  } 
+  
+/*#informations .instruction div kbd{ 
+    font-weight: 700; 
+    font-size: 1.1em; 
+  } */
+  
+#informations .button{ 
+    background-color: rgba(200,200,200,0.2); 
+    font-weight: 700; 
+    font-size: 1.2em; 
+  } 
+  
+#informations .button:hover{ 
+    background-color: rgba(200,200,200,0.4); 
+    box-shadow: 0 0 5px rgba(10,10,10,0.8) inset; 
+    text-shadow: 0 0 10px rgba(10,10,10,0.8); 
+  } 
